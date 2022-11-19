@@ -1,0 +1,15 @@
+class Solution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        self.maxDiam = 0
+        self.height(root)
+        return self.maxDiam
+        
+        
+    def height(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        l = self.height(root.left)
+        r = self.height(root.right)
+        if l + r > self.maxDiam:
+            self.maxDiam = l + r
+        return 1 + max(l, r)
